@@ -1,0 +1,442 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html, #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+         #r-result {
+            width: 100%;
+            }
+       
+    </style>
+    
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=YPtpaHFhtN4m891K01wbSD4P1nrtmoe8"></script>
+    <title>位置信息</title>
+</head>
+<body>
+    <div id="allmap"></div>
+    <div id="r-result">        
+        <input type="button" onclick="add_control();" value="运行轨迹" />
+    </div>
+    
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+    var point = new BMap.Point(117.212944, 31.833287);
+	var marker = new BMap.Marker(point);  // 创建标注
+	map.centerAndZoom(point, 15);
+	map.setCurrentCity("合肥");                     //设置地图显示的城市
+	map.enableScrollWheelZoom(true);
+	//map.addOverlay(marker );         // 给该坐标加一个红点标记
+	
+	var myIcon = new BMap.Icon("point.png", new BMap.Size(5, 5), {
+	    offset: new BMap.Size(5, 10),
+	    imageOffset: new BMap.Size(0, 0 - 0 * 25)
+	});
+
+    function theLocation(deliveryId, lng, lat, speed, loc_time) {
+
+        var pointInfo = new BMap.Point(lng, lat);
+        var marker = new BMap.Marker(pointInfo, { icon: myIcon });
+        map.centerAndZoom(pointInfo, 14);
+        // map.addOverlay(marker);     
+        var gc = new BMap.Geocoder();
+        gc.getLocation(pointInfo, function (rs) {
+            if (rs.addressComponents != null) {
+                var addComp = rs.addressComponents;
+                var location = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+                var opts = {
+                    width: 300,     // 信息窗口宽度
+                    height: 100,     // 信息窗口高度
+                    title: deliveryId, // 信息窗口标题
+                    enableMessage: true//设置允许信息窗发送短息
+                };
+                var infoWindow = new BMap.InfoWindow("当前位置：" + location + "</br>速度：" + speed + "km/h</br>定位时间:" + loc_time, opts);
+                marker.addEventListener("click", function () {
+                    map.openInfoWindow(infoWindow, pointInfo); //开启信息窗口           
+                });
+            }
+        });
+        var point = [lng, lat, loc_time];
+        trackPoint.push({ lng: point[0], lat: point[1], loc_time: point[2] });
+
+        var options = {
+            size: BMAP_POINT_SIZE_SMALL,
+            shape: BMAP_POINT_SHAPE_STAR,
+            color: '#d340c3'
+        }
+        var pointCollection = new BMap.PointCollection(trackPoint, options);  // 初始化PointCollection
+        pointCollection.addEventListener('click', function (e) {
+            alert('单击点的坐标为：' + e.point.lng + ',' + e.point.lat);  // 监听点击事件
+        });
+        map.addOverlay(pointCollection);  // 添加Overlay
+
+
+        if (trackPoint.length == pointCount) {
+            DrawPath(trackPoint);
+            //alert("画线");
+        }
+        map.centerAndZoom(trackPoint[0], 10);
+
+    }
+		var points=[];
+		var trackPoint = [];
+		function GetPoints(lng, lat) {
+		    var point = [lng, lat];
+		    trackPoint.push({ lng: point[0], lat: point[1] });
+		    if (trackPoint.length == pointCount) {
+		        DrawPath(trackPoint);
+		        //alert("画线");
+		    }
+		    //alert(trackPoint[0].lng);
+		    map.centerAndZoom(trackPoint[0], 10);
+
+		}
+		function GetPoints2(points) {
+
+		    alert(points.length);
+
+		    trackPoint = points;
+		    //DrawPath(trackPoint);
+		    alert("倪好");
+		    //alert(trackPoint);
+		}
+
+
+
+		function DrawPath(trackPoint) {
+
+		    if (trackPoint && trackPoint.length > 1) {//判断数值为两个点时开始进行绘制
+		        //alert(trackPoint.length);
+		        var startCount = 0;
+		        for (var i = 0; i < trackPoint.length - 1; i++) {
+		            //起点
+		            if (trackPoint[0].lng == startPoint[0] && trackPoint[0].lat == startPoint[1]) {
+		                if (startCount == 0) {
+		                    var myIcon = new BMap.Icon("icon_start.png", new BMap.Size(30, 60), {
+		                        // 指定定位位置
+		                        offset: new BMap.Size(10, 25),
+		                        // 当需要从一幅较大的图片中截取某部分作为标注图标时，需要指定大图的偏移位置   
+		                        imageOffset: new BMap.Size(0, 0 - 0 * 25) // 设置图片偏移  
+		                    });
+		                    var point = new BMap.Point(startPoint[0], startPoint[1]);
+		                    // 创建标注对象并添加到地图 
+		                    var marker = new BMap.Marker(point, { icon: myIcon });
+		                    map.addOverlay(marker);
+		                    startCount++;
+		                }
+		            }
+		            if (i + 2 == pointCount) {
+		                //alert(trackPoint[i+1].lng+";"+trackPoint[i+1].lat);                       
+		                if (trackPoint[i + 1].lng == endPoint[0] && trackPoint[i + 1].lat == endPoint[1]) {
+		                    var myIcon = new BMap.Icon("icon_end.png", new BMap.Size(30, 60), {
+		                        // 指定定位位置
+		                        offset: new BMap.Size(10, 25),
+		                        // 当需要从一幅较大的图片中截取某部分作为标注图标时，需要指定大图的偏移位置   
+		                        imageOffset: new BMap.Size(0, 0 - 0 * 25) // 设置图片偏移  
+		                    });
+		                    var point = new BMap.Point(endPoint[0], endPoint[1]);
+		                    // 创建标注对象并添加到地图 
+		                    var marker = new BMap.Marker(point, { icon: myIcon });
+		                    map.addOverlay(marker);
+		                }
+		            }
+
+		            var date1 = new Date(trackPoint[i].loc_time);
+		            var date2 = new Date(trackPoint[i + 1].loc_time);
+		            //var date1 = new Date('2018/07/31 15:41:28')
+		            //var date2 = new Date('2018/07/31 16:57:49')
+		            var s1 = date1.getTime(), s2 = date2.getTime();
+		            var total = (s2 - s1) / 1000;
+		            //大于10分钟不划线
+		            if (total < (1 * 60)) {
+		                var polyline22 = new BMap.Polyline(
+                           [
+                           new BMap.Point(trackPoint[i].lng, trackPoint[i].lat),
+                           new BMap.Point(trackPoint[i + 1].lng, trackPoint[i + 1].lat)
+                           ],
+                           {
+                               strokeColor: "blue",
+                               strokeWeight: 7,
+                               strokeOpacity: 0.5
+                           });   //创建折线
+		                map.addOverlay(polyline22);
+		            }
+		            else {
+		                startPosition = new BMap.Point(trackPoint[i].lng, trackPoint[i].lat);
+		                endPosition = new BMap.Point(trackPoint[i + 1].lng, trackPoint[i + 1].lat);
+		                var trackDriving = new BMap.DrivingRoute(map, {
+		                    renderOptions: { map: map, autoViewport: false }, onMarkersSet: function (routes) {
+		                        map.removeOverlay(routes[1].marker);//删除终点
+		                        map.removeOverlay(routes[0].marker);
+		                    }
+		                });
+		                trackDriving.search(startPosition, endPosition, { waypoints: [] });//waypoints表示途经点   
+		            }
+		        }
+		    }
+		}
+		var pointCount=0; 
+		function GetPointsTotallCount(count) {
+		    pointCount = count;
+		}
+		var endPoint=[];
+		var startPoint=[];
+		function GetEndPoint(lng, lat) {
+		    endPoint = [lng, lat];
+		}
+		function GetStartPoint(lng, lat) {
+		    startPoint = [lng, lat];
+		}
+		var opts = {
+		    width: 250,     // 信息窗口宽度
+		    height: 80,     // 信息窗口高度
+		    title: "车辆停留信息", // 信息窗口标题
+		    enableMessage: true//设置允许信息窗发送短息
+		};
+
+		function GetStayTime(start_time, end_time, duration, lng, lat) {
+		    var startTime = timestampToTime(start_time);
+		    var endTime = timestampToTime(end_time);
+		    var duration = secondToDate(duration);
+		    var data_info = [startTime, endTime, duration, lng, lat];
+		    //icon_staypoint
+		    var address;
+		    var content;
+		    var myIcon = new BMap.Icon("icon_staypoint.png", new BMap.Size(30, 60), {
+		        offset: new BMap.Size(10, 25),
+		        imageOffset: new BMap.Size(0, 0 - 0 * 25)
+		    });
+		    var point = new BMap.Point(lng, lat);
+		    var marker = new BMap.Marker(point, { icon: myIcon });
+		    map.addOverlay(marker);
+		    var gc = new BMap.Geocoder();
+		    gc.getLocation(point, function (rs) {
+		        var addComp = rs.addressComponents;
+		        var location = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+		        var opts = {
+		            width: 300,     // 信息窗口宽度
+		            height: 100,     // 信息窗口高度
+		            title: "", // 信息窗口标题
+		            enableMessage: true//设置允许信息窗发送短息
+		        };
+		        var infoWindow = new BMap.InfoWindow("当前位置：" + location + "</br>时间：" + data_info[0] + " 至 " + data_info[1] + " </br>停留时长" + data_info[2], opts);
+		        marker.addEventListener("click", function () {
+		            map.openInfoWindow(infoWindow, point); //开启信息窗口           
+		        });
+		    });
+		}
+
+		function addClickHandler(content, marker) {
+		    marker.addEventListener("click", function (e) {
+		        openInfo(content, e)
+		    }
+            );
+		}
+	function openInfo(content, e) {
+	    var p = e.target;
+	    var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+	    var infoWindow = new BMap.InfoWindow(content, opts);  // 创建信息窗口对象 
+	    map.openInfoWindow(infoWindow, point); //开启信息窗口
+	}
+	function timestampToTime(timestamp) {
+	    var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+	    Y = date.getFullYear() + '-';
+	    M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+	    D = date.getDate() + ' ';
+	    h = date.getHours() + ':';
+	    m = date.getMinutes() + ':';
+	    s = date.getSeconds();
+	    return Y + M + D + h + m + s;
+	}
+		function secondToDate(result) {
+		    var h = Math.floor(result / 3600);
+		    var m = Math.floor((result / 60 % 60));
+		    var s = Math.floor((result % 60));
+		    // return result = h + "小时" + m + "分钟" + s + "秒";
+		    return result = h + ":" + m + ":" + s;
+		}
+
+
+    	 function GetSpeeding(longitude, latitude, loc_time, actual_speed, limit_speed) {
+    	     var time = timestampToTime(loc_time);
+    	     var myIcon = new BMap.Icon("behavior.png", new BMap.Size(30, 60), {
+    	         offset: new BMap.Size(10, 25),
+    	         imageOffset: new BMap.Size(0, 0 - 0 * 25)
+    	     });
+    	     var point = new BMap.Point(longitude, latitude);
+    	     // 创建标注对象并添加到地图 
+    	     var marker = new BMap.Marker(point, { icon: myIcon });
+    	     var content = time + "限速" + limit_speed + "此时速度：" + actual_speed;
+    	     map.addOverlay(marker);               // 将标注添加到地图中
+    	     addClickHandler(content, marker);
+    	 }
+        function GetBreaking(longitude, latitude, loc_time, initial_speed, end_speed) {
+            var time = timestampToTime(loc_time);
+            var myIcon = new BMap.Icon("behavior.png", new BMap.Size(10, 25), {
+                offset: new BMap.Size(10, 25),
+                imageOffset: new BMap.Size(0, 0 - 0 * 25)
+            });
+            var point = new BMap.Point(longitude, latitude);
+            // 创建标注对象并添加到地图 
+            var marker = new BMap.Marker(point, { icon: myIcon });
+            var content = time + "</br>刹车前速度：" + initial_speed + "</br>刹车后速度：" + actual_speed;
+            map.addOverlay(marker);               // 将标注添加到地图中
+            addClickHandler(content, marker);
+        }
+		function GetAcceleration(longitude, latitude, loc_time, actual_speed, limit_speed) {
+		    var time = timestampToTime(loc_time);
+		    var myIcon = new BMap.Icon("behavior.png", new BMap.Size(30, 60), {
+		        offset: new BMap.Size(10, 25),
+		        imageOffset: new BMap.Size(0, 0 - 0 * 25)
+		    });
+		    var point = new BMap.Point(longitude, latitude);
+		    // 创建标注对象并添加到地图 
+		    var marker = new BMap.Marker(point, { icon: myIcon });
+		    var content = "定位时间" + time + "</br>加速前速度：" + initial_speed + "</br>加速后速度：" + actual_speed;
+		    map.addOverlay(marker);               // 将标注添加到地图中
+		    addClickHandler(content, marker);
+		}
+		function GetSteering(longitude, latitude, loc_time, turn_type, speed) {
+		    var time = timestampToTime(loc_time);
+		    var myIcon = new BMap.Icon("behavior.png", new BMap.Size(30, 60), {
+		        offset: new BMap.Size(10, 25),
+		        imageOffset: new BMap.Size(0, 0 - 0 * 25)
+		    });
+		    var point = new BMap.Point(longitude, latitude);
+		    // 创建标注对象并添加到地图 
+		    var marker = new BMap.Marker(point, { icon: myIcon });
+		    var content = time + "方向：" + turn_type + "此时速度：" + speed;
+		    map.addOverlay(marker);   // 将标注添加到地图中
+		    addClickHandler(content, marker);
+		}
+
+	
+
+		function DrawLine(startPositionLng, startPositionLat, endPositionLng, endPositionLat) {
+		    var start = [startPositionLng, startPositionLat];
+		    var end = [endPositionLng, endPositionLat];
+		    var startPosition = new BMap.Point(start[0], start[1]), endPosition = new BMap.Point(end[0], end[1]);
+		    var startCount = 0;
+
+		    if (start[0] == trackPoint[0].lng && start[1] == trackPoint[0].lat) {
+		        if (startCount == 0) {
+
+		            var myIcon = new BMap.Icon("icon_start.png", new BMap.Size(30, 60), {
+		                // 指定定位位置
+		                offset: new BMap.Size(10, 25),
+		                // 当需要从一幅较大的图片中截取某部分作为标注图标时，需要指定大图的偏移位置   
+		                imageOffset: new BMap.Size(0, 0 - 0 * 25) // 设置图片偏移  
+		            });
+		            var point = new BMap.Point(start[0], start[1]);
+		            // 创建标注对象并添加到地图 
+		            var marker = new BMap.Marker(point, { icon: myIcon });
+		            map.addOverlay(marker);
+		            var trackDriving = new BMap.DrivingRoute(map, {
+		                renderOptions: { map: map, autoViewport: false }, onMarkersSet: function (routes) {
+		                    map.removeOverlay(routes[1].marker);//删除终点
+
+		                    startCount++;
+		                }
+		            });
+		        }
+		        else {
+		            var trackDriving = new BMap.DrivingRoute(map, {
+		                renderOptions: { map: map, autoViewport: false }, onMarkersSet: function (routes) {
+		                    map.removeOverlay(routes[1].marker);//删除终点
+		                    map.removeOverlay(routes[0].marker);
+		                }
+		            });
+		            trackDriving.search(startPosition, endPosition, { waypoints: [] });//waypoints表示途经点   		
+		        }
+		    }
+		    else if (end[0] == endPoint[0] && end[1] == endPoint[1]) {
+		        if (pointCount == trackPoint.length + 1) {
+
+		            var myIcon = new BMap.Icon("icon_end.png", new BMap.Size(30, 60), {
+		                // 指定定位位置
+		                offset: new BMap.Size(10, 25),
+		                // 当需要从一幅较大的图片中截取某部分作为标注图标时，需要指定大图的偏移位置   
+		                imageOffset: new BMap.Size(0, 0 - 0 * 25) // 设置图片偏移  
+		            });
+		            var point = new BMap.Point(end[0], end[1]);
+		            // 创建标注对象并添加到地图 
+		            var marker = new BMap.Marker(point, { icon: myIcon });
+		            map.addOverlay(marker);
+		            //marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画			
+		            var trackDriving = new BMap.DrivingRoute(map, {
+		                renderOptions: { map: map, autoViewport: true }, onMarkersSet: function (routes) {
+		                    map.removeOverlay(routes[0].marker); //删除起点		
+
+		                }
+		            });
+		        }
+		        else {
+		            var trackDriving = new BMap.DrivingRoute(map, {
+		                renderOptions: { map: map, autoViewport: false }, onMarkersSet: function (routes) {
+		                    map.removeOverlay(routes[0].marker); //删除起点
+		                    map.removeOverlay(routes[1].marker);//删除终点
+		                }
+		            });
+
+		        }
+
+		    } else {
+		        var trackDriving = new BMap.DrivingRoute(map, {
+		            renderOptions: { map: map, panel: "r-result", autoViewport: false }, onMarkersSet: function (routes) {
+		                map.removeOverlay(routes[0].marker); //删除起点
+		                map.removeOverlay(routes[1].marker);//删除终点
+		            }
+		        });
+		    }
+		    //var trackDriving = new BMap.DrivingRoute(map, { renderOptions: { map: map, autoViewport: true } });
+		    //trackDriving.search(startPosition, endPosition,{waypoints:[]});//waypoints表示途经点       
+		    //trackDriving.setSearchCompleteCallback(function(rs){
+		    //	var abc=rs;
+		    //       var pts = trackDriving.getResults().getPlan(0).getRoute(0).getPath();    //通过驾车实例，获得一系列点的数组
+		    //        trackDriving.clearResults();
+		    //       var polyline = new BMap.Polyline(pts,{ strokeColor: "blue", strokeWeight: 5, strokeOpacity: 1 });    
+		    //        map.addOverlay(polyline); 
+		    // });
+		    var points = [startPosition, endPosition];
+		    var polyline = new BMap.Polyline(points, {
+		        enableEditing: false,//是否启用线编辑，默认为false
+		        enableClicking: true,//是否响应点击事件，默认为true
+		        //icons:[icons],  		  
+		        strokeColor: "blue", strokeWeight: 6, strokeOpacity: 0.5
+		    });  //定义折线  
+		    map.addOverlay(polyline);
+		}
+		function GetLastPoint(lng, lat, currentTime, speed) {
+		    var pointInfo = new BMap.Point(lng, lat);
+		    var marker = new BMap.Marker(pointInfo, { icon: myIcon });
+		    map.centerAndZoom(pointInfo, 14);		    
+		    var gc = new BMap.Geocoder();
+		    gc.getLocation(pointInfo, function (rs) {
+		        if (rs.addressComponents != null) {
+		            var addComp = rs.addressComponents;
+		            var location = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+		            var opts = {
+		                width: 300,     // 信息窗口宽度
+		                height: 100,     // 信息窗口高度
+		                title: deliveryId, // 信息窗口标题
+		                enableMessage: true//设置允许信息窗发送短息
+		            };
+		            var infoWindow = new BMap.InfoWindow("当前位置：" + location + "</br>速度：" + speed + "km/h</br>定位时间:" + currentTime, opts);
+		            marker.addEventListener("click", function () {
+		                map.openInfoWindow(infoWindow, pointInfo); //开启信息窗口           
+		            });
+		        }
+		    });
+		}
+      
+</script>

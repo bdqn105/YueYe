@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取百度地图点击两点的路线规划信息</title>
+    <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=CmVUh1GnOGsl7YcRNDSBb3AEzrEE0RXr"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="map" class="map"></div>
+    <div style="position:absolute;top:10px;left: 10px;">
+        <table>
+            <tr>
+                <td><span>起点</span></td>
+                <td><input type="text" id="sPoint"></td>
+            </tr>
+            <tr>
+                <td><span>终点</span></td>
+                <td><input type="text" id="ePoint"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="查询" id="btnSearch"> </td>
+                <td><input type="button" value="重置" id="btnReset"> </td>
+            </tr>
+            <tr>
+                <td><span>时间</span></td>
+                <td><input type="text" id="time" readonly style="width:50px"> | <input type="text" id="timeformate" readonly style="width:50px"></td>
+            </tr>
+            <tr>
+                <td><span>距离</span></td>
+                <td><input type="text" id="distance" readonly style="width:50px"> | <input type="text" id="distanceformate" readonly style="width:50px"></td>
+            </tr>
+        </table>
+        <hr />
+        <br />
+        <textarea id="result" rows="6" cols="4"></textarea>
+    </div>
+</body>
+</html>
+<script>
+
+    function creat(){
+        // 创建Map实例
+        map = new BMap.Map("map", { enableMapClick: false });
+        var point = new BMap.Point(112.571757,37.798085);
+        map.centerAndZoom(point, 9);
+        map.enableScrollWheelZoom();
+        if(typeof(mapClickHandler) === "function")
+        {
+            map.addEventListener("click", mapClickHandler);
+        }
+    }
+    creat();
+    var flag = true;
+    function mapClickHandler(e){
+        // 从经纬度得到地址
+        var curPos = e.point.lng + "," + e.point.lat;
+        if(flag){
+            $("#sPoint").val(curPos);
+            flag = false;
+        }else{
+            $("#ePoint").val(curPos);
+            flag = true;
+        }
+    }
+
+    $("#btnSearch").click(function(){
+        var sp = $("#sPoint").val();
+        var ep = $("#ePoint").val();
+        if(sp && ep){
+            /*/!*var sPoint = new BMap.Point(sp.split(",")[0],sp.split(",")[1]);
+             var ePoint = new BMap.Point(ep.split(",")[0],ep.split(",")[1]);*!/*/
+            pointPathSearch(sp.split(",")[0],sp.split(",")[1],
+                    ep.split(",")[0],ep.split(",")[1]);
+        }
+        //namePathSearch("天津","太原",1,array);
+    });
+
+    $("#btnReset").click(function(){
+        var sp = $("#sPoint").val("");
+        var ep = $("#ePoint").val("");
+        flag = true;
+        map.clearOverlays();
+    });
+
+    function onSearchCompleteYeWHandler(data){
+        //data中包含搜索返回的一些数据
+        if(data){
+            $("#result").text(data.coors);
+            $("#time").val(data.time);
+            $("#timeformate").val(data.formattime);
+            $("#distance").val(data.distance);
+            $("#distanceformate").val(data.formatdistance);
+        }
+    }
+
+    function pointPathSearch(slng,slat,elng,elat,policy,tujd){
+        //确定查询的策略，百度现在只支持最短时间，最短路程，不走高速三种策略
+        if(policy){
+            if(policy === 1){
+                policy = BMAP_DRIVING_POLICY_LEAST_TIME;
+            }else if(polycy === 2){
+                policy = BMAP_DRIVING_POLICY_LEAST_DISTANCE;
+            }else if(polycy === 3){
+                policy = BMAP_DRIVING_POLICY_AVOID_HIGHWAYS;
+            }
+        }else{
+            policy = BMAP_DRIVING_POLICY_LEAST_TIME;
+        }
+        if(slng && slat && elng && elat){
+            var pA = new BMap.Point(slng,slat);
+            var pB = new BMap.Point(elng,elat);
+            driving = new BMap.DrivingRoute(
+                    map,
+                    {renderOptions:{map: map, autoViewport: true},
+                        onSearchComplete:onSearchCompleteHandler,
+                        policy:policy
+                    });
+            if(tujd && tujd.length>0){
+                driving.search(pA, pB,{waypoints:tujd});
+            }else{
+                driving.search(pA, pB);
+            }
+
+        }
+    }
+
+    function onSearchCompleteHandler(result){
+        //DrivingRouteResult
+        //console.log(result.policy.length);
+        var t = result.getPlan(0);
+        var tt = t.getRoute(0).getPath();
+        var result = "";
+        $.each(tt,function(index,item){
+            if(item){
+                if(result === ""){
+                    result += item.lng + "," + item.lat;
+                }else{
+                    result += ";" + item.lng + "," + item.lat;
+                }
+            }
+        });
+        var ob = new Object();
+        ob.coors = result;
+        ob.time = t.getDuration(false);
+        ob.formattime = t.getDuration(true);
+        ob.distance = t.getDistance(false);
+        ob.formatdistance = t.getDistance(true);
+        if(typeof onSearchCompleteYeWHandler === "function"){
+            onSearchCompleteYeWHandler(ob);
+        }
+    }
+</script>

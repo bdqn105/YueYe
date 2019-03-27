@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html, #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=wQVlOoEttnzZqrOCOHM3fpf1UyTO61YL"></script>
+    <title>设置路径</title>
+</head>
+<body>
+    <div id="allmap"></div>
+    <div id="r-result"></div>
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    var x = "";
+    var y = "";
+    var map = new BMap.Map("allmap");
+    map.centerAndZoom(new BMap.Point(117.212944, 31.833287), 13);
+    map.addControl(new BMap.MapTypeControl({
+        mapTypes: [
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+        ]
+    }));
+    map.setCurrentCity("合肥");          // 设置地图显示的城市 此项是必须设置的
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+    function showInfo(e) {
+        x = e.point.lng;
+        y = e.point.lat;
+        window.external.getLocation(e.point.lng + ";" + e.point.lat);
+        var point = new BMap.Point(x, y);  //获取当前地理名称
+        var marker = new BMap.Marker(point);
+        map.addOverlay(marker);
+        var gc = new BMap.Geocoder();
+        gc.getLocation(point, function (rs) {
+            var addComp = rs.addressComponents;
+            var address = rs.address;
+            window.external.getLocationName(address);
+            window.external.getViaLocation(e.point.lng + ";" + e.point.lat,address);
+            map.addEventListener("click", showInfo);
+        });
+    }
+    function clearAll(e) {
+        map.removeOverlay(marker);
+    }  
+
+    //var output = "总共需要";
+    //var searchComplete = function (results) {
+    //    if (transit.getStatus() != BMAP_STATUS_SUCCESS) {
+    //        return;
+    //    }
+    //    var plan = results.getPlan(0);
+    //    output += plan.getDuration(true) + "\n";                //获取时间
+    //    output += "总路程为：";
+    //    output += plan.getDistance(true) + "\n";             //获取距离
+    //}
+    //var transit = new BMap.DrivingRoute(map, {
+    //    renderOptions: { map: map },
+    //    onSearchComplete: searchComplete,
+    //    onPolylinesSet: function () {
+    //        setTimeout(function () { alert(output) }, "1000");
+    //    }
+    //});
+    //transit.search("上地", "西单");
+        
+    function theLocation(originLng, originLat, destinationLng, destinationLat) {
+        var origin = [originLng, originLat];
+        var destination = [destinationLng, destinationLat];
+        var originPoint = new BMap.Point(origin[0], origin[1]);
+        var destinationPoint = new BMap.Point(destination[0], destination[1]);      
+        //var driving = new BMap.DrivingRoute(map, { renderOptions: { map: map, autoViewport: true } });
+        // driving.search(originPoint ,destinationPoint);
+        //var output = "该路径总共需要时长";
+        //var searchComplete = function (results) {
+        //    if (transit.getStatus() != BMAP_STATUS_SUCCESS) {
+        //        return;
+        //    }
+        //    var plan = results.getPlan(0);
+        //    output += plan.getDuration(true) + "\n";                //获取时间
+        //    output += "总路程为：";
+        //    output += plan.getDistance(true) + "\n";             //获取距离
+        //}
+        //window.external.getMarker(output);
+        var transit = new BMap.DrivingRoute(map, {
+            renderOptions: {
+                map: map,
+                panel: "r-result",
+                enableDragging: true //起终点可进行拖拽                
+            },            
+        });
+        var pointClick = new BMap.Point(e.point.lng, e.point.lat);
+        alert(pointClick.lng, pointClick.lat);
+        transit.search(originPoint, destinationPoint);       
+    } 
+
+    map.addEventListener("click", function (e) {
+        var pointClick = new BMap.Point(e.point.lng, e.point.lat);      
+        window.external.getLocation(pointClick.lng, pointClick.lat);
+        var gc = new BMap.Geocoder();
+        gc.getLocation(point, function (rs) {
+            var addComp = rs.addressComponents;
+            var address = rs.address;
+            window.external.getLocationName(addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber);
+        });
+    });
+</script>

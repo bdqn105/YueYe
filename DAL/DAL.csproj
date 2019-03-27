@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9FE00521-3A8B-42B1-814E-585E99407B2E}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>YueYePlat.DAL</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>YueYePlat.DAL</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <PublishUrl>http://localhost/Maticsoft.DAL/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=5.1.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services">
+      <Name>System.Web.Services</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{E3D8759A-C5EB-402D-9F10-F5C6029A8D1A}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
+      <Project>{0988C62E-247F-471F-A183-DB509C7A3839}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Name>Model</Name>
+      <Project>{53995DBB-9836-4647-AD22-865884FDEB9E}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="chargebackinfo.cs" />
+    <Compile Include="clientinfo.ext.cs" />
+    <Compile Include="clientorder.cs" />
+    <Compile Include="clientreturnorder.cs" />
+    <Compile Include="companyinfo.ext.cs" />
+    <Compile Include="deliverycurhumiinfo.cs" />
+    <Compile Include="deliveryorder.cs" />
+    <Compile Include="deliveryorder.ext.cs" />
+    <Compile Include="deliveryorderfee.cs" />
+    <Compile Include="feetype.cs" />
+    <Compile Include="loginfo.cs" />
+    <Compile Include="MySessionStateConfig.cs" />
+    <Compile Include="printinfo.cs" />
+    <Compile Include="productinfo.ext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SysManage.cs" />
+    <Compile Include="clientinfo.cs" />
+    <Compile Include="companyinfo.cs" />
+    <Compile Include="deliverycurgpsinfo.cs" />
+    <Compile Include="deliverycurgyroinfo.cs" />
+    <Compile Include="deliverycurtempinfo.cs" />
+    <Compile Include="deliverypath.cs" />
+    <Compile Include="deviceuseinfo.cs" />
+    <Compile Include="driverinfo.cs" />
+    <Compile Include="exceptioninfo.cs" />
+    <Compile Include="exceptiontype.cs" />
+    <Compile Include="incubator.cs" />
+    <Compile Include="jamphotomanger.cs" />
+    <Compile Include="logiscompanyinfo.cs" />
+    <Compile Include="logistouser.cs" />
+    <Compile Include="productdelivery.cs" />
+    <Compile Include="productinfo.cs" />
+    <Compile Include="refrigerationhouseinfo.cs" />
+    <Compile Include="refrighousemonitoring.cs" />
+    <Compile Include="refueling.cs" />
+    <Compile Include="regionalparkmanage.cs" />
+    <Compile Include="roadtoll.cs" />
+    <Compile Include="sessions.cs" />
+    <Compile Include="tempvehicleinfo.cs" />
+    <Compile Include="terminaldeviceinfo.cs" />
+    <Compile Include="usercontrolinfo.cs" />
+    <Compile Include="usersinfo.cs" />
+    <Compile Include="usersinfo.ext.cs" />
+    <Compile Include="userstypeinfo.cs" />
+    <Compile Include="usertoken.cs" />
+    <Compile Include="vehicledelivery.cs" />
+    <Compile Include="vehicledoors.cs" />
+    <Compile Include="vehicleinfo.cs" />
+    <Compile Include="vehiclejam.cs" />
+    <Compile Include="vehiclepointoff.cs" />
+    <Compile Include="vehicletype.cs" />
+    <Compile Include="vehicleupkeep.cs" />
+    <Compile Include="vehihiclemileage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\YueYePlat.Model.clientinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.companyinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliverycurgpsinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliverycurgyroinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliverycurhumiinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliverycurtempinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliveryorder.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliveryorderfee.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliverypath.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deviceuseinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.driverinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.exceptioninfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.exceptiontype.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.feetype.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.incubator.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.jamphotomanger.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.logiscompanyinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.logistouser.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.productdelivery.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.productinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.refrigerationhouseinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.refrighousemonitoring.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.refueling.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.regionalparkmanage.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.roadtoll.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.sessions.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.tempvehicleinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.terminaldeviceinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.usercontrolinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.usersinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.userstypeinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.usertoken.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehicledelivery.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehicledoors.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehicleinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehiclejam.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehiclepointoff.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehicletype.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehicleupkeep.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehihiclemileage.datasource" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

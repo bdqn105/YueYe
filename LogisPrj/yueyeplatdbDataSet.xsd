@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="yueyeplatdbDataSet" targetNamespace="http://tempuri.org/yueyeplatdbDataSet.xsd" xmlns:mstns="http://tempuri.org/yueyeplatdbDataSet.xsd" xmlns="http://tempuri.org/yueyeplatdbDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="yueyeplatdbConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="yueyeplatdbConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.LogisPrj.Properties.Settings.GlobalReference.Default.yueyeplatdbConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="driverinfoTableAdapter" GeneratorDataComponentClassName="driverinfoTableAdapter" Name="driverinfo" UserDataComponentName="driverinfoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="yueyeplatdbConnectionString (Settings)" DbObjectName="yueyeplatdb.driverinfo" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Id, DriverId, DriverName, DriverSex, FamilyAddress, Mobile, IdNumber, DriverLicense, LicenseType, DriverLocation, EmergencyContact, EmergencyMobile, EmergencyRelations, DriverPhoto, CompanyId, Type FROM driverinfo</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="yueyeplatdbDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="yueyeplatdbDataSet" msprop:Generator_UserDSName="yueyeplatdbDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="driverinfo" msprop:Generator_TableClassName="driverinfoDataTable" msprop:Generator_TableVarName="tabledriverinfo" msprop:Generator_TablePropName="driverinfo" msprop:Generator_RowDeletingName="driverinfoRowDeleting" msprop:Generator_RowChangingName="driverinfoRowChanging" msprop:Generator_RowEvHandlerName="driverinfoRowChangeEventHandler" msprop:Generator_RowDeletedName="driverinfoRowDeleted" msprop:Generator_UserTableName="driverinfo" msprop:Generator_RowChangedName="driverinfoRowChanged" msprop:Generator_RowEvArgName="driverinfoRowChangeEvent" msprop:Generator_RowClassName="driverinfoRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

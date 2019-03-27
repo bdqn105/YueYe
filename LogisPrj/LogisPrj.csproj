@@ -1,0 +1,910 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit.3.10.1\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6E7D64C1-28D0-4C68-A890-7072D218FC2D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LogisPrj</RootNamespace>
+    <AssemblyName>LogisPrj</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>yueye.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IrisSkin4, Version=2006.3.22.45, Culture=neutral, PublicKeyToken=127be25a6db25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\IrisSkin4.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Qiniu">
+      <HintPath>dll\Qiniu.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThoughtWorks.QRCode, Version=1.0.5672.21803, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BDYingYanAPIHelper.cs" />
+    <Compile Include="ExportToExcel.cs" />
+    <Compile Include="FrmBaiduMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBaiduMap.Designer.cs">
+      <DependentUpon>FrmBaiduMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChargeback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChargeback.Designer.cs">
+      <DependentUpon>FrmChargeback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClientOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClientOrder.Designer.cs">
+      <DependentUpon>FrmClientOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClientOrderInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClientOrderInfo.Designer.cs">
+      <DependentUpon>FrmClientOrderInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCompanyRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCompanyRegister.Designer.cs">
+      <DependentUpon>FrmCompanyRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDataExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDataExport.Designer.cs">
+      <DependentUpon>FrmDataExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDialog.Designer.cs">
+      <DependentUpon>FrmDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmExceptionInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmExceptionInfo.Designer.cs">
+      <DependentUpon>FrmExceptionInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFee.Designer.cs">
+      <DependentUpon>FrmFee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFeeType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFeeType.Designer.cs">
+      <DependentUpon>FrmFeeType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLocationMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLocationMonitor.Designer.cs">
+      <DependentUpon>FrmLocationMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLocationMonitorInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLocationMonitorInfo.Designer.cs">
+      <DependentUpon>FrmLocationMonitorInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClient.Designer.cs">
+      <DependentUpon>FrmClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClientAddOrUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClientAddOrUpdate.Designer.cs">
+      <DependentUpon>FrmClientAddOrUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCompany.Designer.cs">
+      <DependentUpon>FrmCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCompanyAddOrUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCompanyAddOrUpdate.Designer.cs">
+      <DependentUpon>FrmCompanyAddOrUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPickupOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPickupOrder.Designer.cs">
+      <DependentUpon>FrmPickupOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRefueling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRefueling.Designer.cs">
+      <DependentUpon>FrmRefueling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRefuelingInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRefuelingInfo.Designer.cs">
+      <DependentUpon>FrmRefuelingInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRegionalparkmanage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRegionalparkmanage.Designer.cs">
+      <DependentUpon>FrmRegionalparkmanage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReport.Designer.cs">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReportManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReportManager.Designer.cs">
+      <DependentUpon>FrmReportManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRetrunOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRetrunOrder.Designer.cs">
+      <DependentUpon>FrmRetrunOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRoadtollInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRoadtollInfo.Designer.cs">
+      <DependentUpon>FrmRoadtollInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTempMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTempMonitor.Designer.cs">
+      <DependentUpon>FrmTempMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTranferAddProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTranferAddProduct.Designer.cs">
+      <DependentUpon>FrmTranferAddProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTranferOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTranferOrder.Designer.cs">
+      <DependentUpon>FrmTranferOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransAddNewOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransAddNewOrder.Designer.cs">
+      <DependentUpon>FrmTransAddNewOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferEnding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferEnding.Designer.cs">
+      <DependentUpon>FrmTransferEnding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferFee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferFee.Designer.cs">
+      <DependentUpon>FrmTransferFee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferFeeInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferFeeInfo.Designer.cs">
+      <DependentUpon>FrmTransferFeeInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferFeeType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferFeeType.Designer.cs">
+      <DependentUpon>FrmTransferFeeType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferOrderInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferOrderInfo.Designer.cs">
+      <DependentUpon>FrmTransferOrderInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferOrderReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferOrderReport.Designer.cs">
+      <DependentUpon>FrmTransferOrderReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferPath.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferPath.Designer.cs">
+      <DependentUpon>FrmTransferPath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferPathMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferPathMap.Designer.cs">
+      <DependentUpon>FrmTransferPathMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferProductInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferProductInfo.Designer.cs">
+      <DependentUpon>FrmTransferProductInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferSetOrderId.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferSetOrderId.Designer.cs">
+      <DependentUpon>FrmTransferSetOrderId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferTempInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferTempInfo.Designer.cs">
+      <DependentUpon>FrmTransferTempInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransTempAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransTempAdd.Designer.cs">
+      <DependentUpon>FrmTransTempAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVehicleDeliveryAddOrUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVehicleDeliveryAddOrUpdate.Designer.cs">
+      <DependentUpon>FrmVehicleDeliveryAddOrUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDeviceUse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeviceUse.Designer.cs">
+      <DependentUpon>FrmDeviceUse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDriver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDriver.Designer.cs">
+      <DependentUpon>FrmDriver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDriverAddOrUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDriverAddOrUpdate.Designer.cs">
+      <DependentUpon>FrmDriverAddOrUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmException.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmException.Designer.cs">
+      <DependentUpon>FrmException.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmExceptionType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmExceptionType.Designer.cs">
+      <DependentUpon>FrmExceptionType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmJamphotomanger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmJamphotomanger.Designer.cs">
+      <DependentUpon>FrmJamphotomanger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProduct.Designer.cs">
+      <DependentUpon>FrmProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProductAddOrUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProductAddOrUpdate.Designer.cs">
+      <DependentUpon>FrmProductAddOrUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPwdModify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPwdModify.Designer.cs">
+      <DependentUpon>FrmPwdModify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRoadtoll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRoadtoll.Designer.cs">
+      <DependentUpon>FrmRoadtoll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRefrigerationhouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRefrigerationhouse.Designer.cs">
+      <DependentUpon>FrmRefrigerationhouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTempvehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTempvehicle.Designer.cs">
+      <DependentUpon>FrmTempvehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTerminaldevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTerminaldevice.Designer.cs">
+      <DependentUpon>FrmTerminaldevice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferManager.Designer.cs">
+      <DependentUpon>FrmTransferManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserControl.Designer.cs">
+      <DependentUpon>FrmUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserManager.Designer.cs">
+      <DependentUpon>FrmUserManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUsers.Designer.cs">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserType.Designer.cs">
+      <DependentUpon>FrmUserType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVehicleAddOrUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVehicleAddOrUpdate.Designer.cs">
+      <DependentUpon>FrmVehicleAddOrUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frmvehicledoors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmvehicledoors.Designer.cs">
+      <DependentUpon>Frmvehicledoors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVehicleinfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVehicleinfo.Designer.cs">
+      <DependentUpon>FrmVehicleinfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVehicleJam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVehicleJam.Designer.cs">
+      <DependentUpon>FrmVehicleJam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVehicleJamInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVehicleJamInfo.Designer.cs">
+      <DependentUpon>FrmVehicleJamInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVehicleKeepReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVehicleKeepReport.Designer.cs">
+      <DependentUpon>FrmVehicleKeepReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVehicleType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVehicleType.Designer.cs">
+      <DependentUpon>FrmVehicleType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVehicleupkeep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVehicleupkeep.Designer.cs">
+      <DependentUpon>FrmVehicleupkeep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVehicleupkeepInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVehicleupkeepInfo.Designer.cs">
+      <DependentUpon>FrmVehicleupkeepInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListItem.cs" />
+    <Compile Include="PointParams.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QiniuInfo.cs" />
+    <Compile Include="QiniuManager.cs" />
+    <Compile Include="YingyanDrivingbehavior.cs" />
+    <Compile Include="YingyanDrivingbehaviorInfo.cs" />
+    <Compile Include="YingyanDrivingbehavior_harsh_acceleration.cs" />
+    <Compile Include="YingyanDrivingbehavior_harsh_steering.cs" />
+    <Compile Include="YingyanDrivingbehavior_speed.cs" />
+    <Compile Include="YingyanDrivingbehavior_Speeding_points.cs" />
+    <Compile Include="YingYanElem.cs" />
+    <Compile Include="YingYanPoint.cs" />
+    <Compile Include="YingYanPoint_ex.cs" />
+    <Compile Include="YingyanStaypoint.cs" />
+    <Compile Include="YingyanStayPointInfo.cs" />
+    <Compile Include="YingyanStaypoint_ex.cs" />
+    <EmbeddedResource Include="FrmBaiduMap.resx">
+      <DependentUpon>FrmBaiduMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChargeback.resx">
+      <DependentUpon>FrmChargeback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClientOrder.resx">
+      <DependentUpon>FrmClientOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClientOrderInfo.resx">
+      <DependentUpon>FrmClientOrderInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCompanyRegister.resx">
+      <DependentUpon>FrmCompanyRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDataExport.resx">
+      <DependentUpon>FrmDataExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDialog.resx">
+      <DependentUpon>FrmDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmExceptionInfo.resx">
+      <DependentUpon>FrmExceptionInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFee.resx">
+      <DependentUpon>FrmFee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFeeType.resx">
+      <DependentUpon>FrmFeeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLocationMonitor.resx">
+      <DependentUpon>FrmLocationMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLocationMonitorInfo.resx">
+      <DependentUpon>FrmLocationMonitorInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClient.resx">
+      <DependentUpon>FrmClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClientAddOrUpdate.resx">
+      <DependentUpon>FrmClientAddOrUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCompany.resx">
+      <DependentUpon>FrmCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCompanyAddOrUpdate.resx">
+      <DependentUpon>FrmCompanyAddOrUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPickupOrder.resx">
+      <DependentUpon>FrmPickupOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRefueling.resx">
+      <DependentUpon>FrmRefueling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRefuelingInfo.resx">
+      <DependentUpon>FrmRefuelingInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRegionalparkmanage.resx">
+      <DependentUpon>FrmRegionalparkmanage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReport.resx">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReportManager.resx">
+      <DependentUpon>FrmReportManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRetrunOrder.resx">
+      <DependentUpon>FrmRetrunOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRoadtollInfo.resx">
+      <DependentUpon>FrmRoadtollInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTempMonitor.resx">
+      <DependentUpon>FrmTempMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTranferAddProduct.resx">
+      <DependentUpon>FrmTranferAddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTranferOrder.resx">
+      <DependentUpon>FrmTranferOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransAddNewOrder.resx">
+      <DependentUpon>FrmTransAddNewOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferEnding.resx">
+      <DependentUpon>FrmTransferEnding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferFee.resx">
+      <DependentUpon>FrmTransferFee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferFeeInfo.resx">
+      <DependentUpon>FrmTransferFeeInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferFeeType.resx">
+      <DependentUpon>FrmTransferFeeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferOrderInfo.resx">
+      <DependentUpon>FrmTransferOrderInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferOrderReport.resx">
+      <DependentUpon>FrmTransferOrderReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferPath.resx">
+      <DependentUpon>FrmTransferPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferPathMap.resx">
+      <DependentUpon>FrmTransferPathMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferProductInfo.resx">
+      <DependentUpon>FrmTransferProductInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferSetOrderId.resx">
+      <DependentUpon>FrmTransferSetOrderId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferTempInfo.resx">
+      <DependentUpon>FrmTransferTempInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransTempAdd.resx">
+      <DependentUpon>FrmTransTempAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVehicleDeliveryAddOrUpdate.resx">
+      <DependentUpon>FrmVehicleDeliveryAddOrUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeviceUse.resx">
+      <DependentUpon>FrmDeviceUse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDriver.resx">
+      <DependentUpon>FrmDriver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDriverAddOrUpdate.resx">
+      <DependentUpon>FrmDriverAddOrUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmException.resx">
+      <DependentUpon>FrmException.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmExceptionType.resx">
+      <DependentUpon>FrmExceptionType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmJamphotomanger.resx">
+      <DependentUpon>FrmJamphotomanger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProduct.resx">
+      <DependentUpon>FrmProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProductAddOrUpdate.resx">
+      <DependentUpon>FrmProductAddOrUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPwdModify.resx">
+      <DependentUpon>FrmPwdModify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRoadtoll.resx">
+      <DependentUpon>FrmRoadtoll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRefrigerationhouse.resx">
+      <DependentUpon>FrmRefrigerationhouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTempvehicle.resx">
+      <DependentUpon>FrmTempvehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTerminaldevice.resx">
+      <DependentUpon>FrmTerminaldevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferManager.resx">
+      <DependentUpon>FrmTransferManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserControl.resx">
+      <DependentUpon>FrmUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserManager.resx">
+      <DependentUpon>FrmUserManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUsers.resx">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserType.resx">
+      <DependentUpon>FrmUserType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVehicleAddOrUpdate.resx">
+      <DependentUpon>FrmVehicleAddOrUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmvehicledoors.resx">
+      <DependentUpon>Frmvehicledoors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVehicleinfo.resx">
+      <DependentUpon>FrmVehicleinfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVehicleJam.resx">
+      <DependentUpon>FrmVehicleJam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVehicleJamInfo.resx">
+      <DependentUpon>FrmVehicleJamInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVehicleKeepReport.resx">
+      <DependentUpon>FrmVehicleKeepReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVehicleType.resx">
+      <DependentUpon>FrmVehicleType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVehicleupkeep.resx">
+      <DependentUpon>FrmVehicleupkeep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVehicleupkeepInfo.resx">
+      <DependentUpon>FrmVehicleupkeepInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Report3.rdlc" />
+    <EmbeddedResource Include="ReportSub.rdlc" />
+    <EmbeddedResource Include="ClientReport.rdlc" />
+    <EmbeddedResource Include="Report2.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportSubFee.rdlc" />
+    <EmbeddedResource Include="VehicleKeep.rdlc" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Maticsoft.Model.SysNode.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.clientinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.companyinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliverycurgpsinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliverycurgyroinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliverycurhumiinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliverycurtempinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliveryorder.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliveryorderfee.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deliverypath.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.deviceuseinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.driverinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.exceptioninfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.exceptiontype.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.feetype.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.incubator.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.jamphotomanger.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.loginfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.logiscompanyinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.logistouser.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.productdelivery.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.productinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.refrigerationhouseinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.refrighousemonitoring.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.refueling.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.regionalparkmanage.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.roadtoll.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.sessions.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.tempvehicleinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.terminaldeviceinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.usercontrolinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.usersinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.userstypeinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.usertoken.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehicledelivery.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehicledoors.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehicleinfo.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehiclejam.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehiclepointoff.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehicletype.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehicleupkeep.datasource" />
+    <None Include="Properties\DataSources\YueYePlat.Model.vehihiclemileage.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{38d7aa58-c95b-449b-86c6-a8073a56e11f}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{e3d8759a-c5eb-402d-9f10-f5c6029a8d1a}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{9fe00521-3a8b-42b1-814e-585e99407b2e}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
+      <Project>{0988c62e-247f-471f-a183-db509c7a3839}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Log\Log.csproj">
+      <Project>{cb627720-f736-431d-b041-442039c9cb50}</Project>
+      <Name>Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{53995dbb-9836-4647-ad22-865884fdeb9e}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Baidumap.html" />
+    <Content Include="CurrentLocation.html" />
+    <Content Include="DeliveryEndPosition.html" />
+    <Content Include="DeliveryPath.html" />
+    <Content Include="DeliveryPathGet.html" />
+    <Content Include="DeliveryPathPoint.html" />
+    <Content Include="dll\IrisSkin4.dll" />
+    <Content Include="HighChart.html" />
+    <Content Include="Image\delete.png" />
+    <Content Include="Image\first.png" />
+    <Content Include="Image\last.png" />
+    <Content Include="Image\next.png" />
+    <Content Include="Image\pre.png" />
+    <Content Include="Image\yueye.ico" />
+    <Content Include="Image\上传.png" />
+    <Content Include="Image\下载.png" />
+    <Content Include="Image\打印.png" />
+    <Content Include="Image\放大.png" />
+    <Content Include="Image\旋转.png" />
+    <Content Include="Image\缩小.png" />
+    <Content Include="LocationMonitor.html" />
+    <Content Include="Path.html" />
+    <Content Include="Real-time_Location.html" />
+    <Content Include="RegionalPark.html" />
+    <Content Include="yueye.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="dll\Skins\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.10.1\build\NUnit.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

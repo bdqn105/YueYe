@@ -1,0 +1,81 @@
+﻿using System;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.Text;
+using Maticsoft.Common;
+using LTP.Accounts.Bus;
+namespace YueYePlat.Web.jamphotomanger
+{
+    public partial class Modify : Page
+    {       
+
+        		protected void Page_Load(object sender, EventArgs e)
+		{
+			if (!Page.IsPostBack)
+			{
+				if (Request.Params["id"] != null && Request.Params["id"].Trim() != "")
+				{
+					int id=(Convert.ToInt32(Request.Params["id"]));
+					ShowInfo(id);
+				}
+			}
+		}
+			
+	private void ShowInfo(int id)
+	{
+		YueYePlat.BLL.jamphotomanger bll=new YueYePlat.BLL.jamphotomanger();
+		YueYePlat.Model.jamphotomanger model=bll.GetModel(id);
+		this.lblid.Text=model.id.ToString();
+		this.txtJamId.Text=model.JamId.ToString();
+		this.txtJamPhotos.Text=model.JamPhotos;
+
+	}
+
+		public void btnSave_Click(object sender, EventArgs e)
+		{
+			
+			string strErr="";
+			if(!PageValidate.IsNumber(txtJamId.Text))
+			{
+				strErr+="JamId格式错误！\\n";	
+			}
+			if(this.txtJamPhotos.Text.Trim().Length==0)
+			{
+				strErr+="JamPhotos不能为空！\\n";	
+			}
+
+			if(strErr!="")
+			{
+				MessageBox.Show(this,strErr);
+				return;
+			}
+			int id=int.Parse(this.lblid.Text);
+			long JamId=long.Parse(this.txtJamId.Text);
+			string JamPhotos=this.txtJamPhotos.Text;
+
+
+			YueYePlat.Model.jamphotomanger model=new YueYePlat.Model.jamphotomanger();
+			model.id=id;
+			model.JamId=JamId;
+			model.JamPhotos=JamPhotos;
+
+			YueYePlat.BLL.jamphotomanger bll=new YueYePlat.BLL.jamphotomanger();
+			bll.Update(model);
+			Maticsoft.Common.MessageBox.ShowAndRedirect(this,"保存成功！","list.aspx");
+
+		}
+
+
+        public void btnCancle_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("list.aspx");
+        }
+    }
+}

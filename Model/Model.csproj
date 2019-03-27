@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{53995DBB-9836-4647-AD22-865884FDEB9E}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>YueYePlat.Model</AssemblyName>
+    <RootNamespace>YueYePlat.Model</RootNamespace>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <PublishUrl>http://localhost/Maticsoft.Model/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="chargebackinfo.cs" />
+    <Compile Include="clientinfo.ext.cs" />
+    <Compile Include="clientorder.cs" />
+    <Compile Include="clientorder.ext.cs" />
+    <Compile Include="clientreturnorder.cs" />
+    <Compile Include="deliverycurgpsinfo.ext.cs" />
+    <Compile Include="deliverycurhumiinfo.cs" />
+    <Compile Include="deliveryorder.cs" />
+    <Compile Include="deliveryorder.ext.cs" />
+    <Compile Include="deliveryorderfee.cs" />
+    <Compile Include="deliveryorderfee.ext.cs" />
+    <Compile Include="deviceuseinfo.ext.cs" />
+    <Compile Include="driverinfo.ext.cs" />
+    <Compile Include="feetype.cs" />
+    <Compile Include="loginfo.cs" />
+    <Compile Include="printinfo.cs" />
+    <Compile Include="productdelivery.ext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="refueling.ext.cs" />
+    <Compile Include="regionalparkmanage.ext.cs" />
+    <Compile Include="roadtoll.ext.cs" />
+    <Compile Include="SysNode.cs" />
+    <Compile Include="clientinfo.cs" />
+    <Compile Include="companyinfo.cs" />
+    <Compile Include="deliverycurgpsinfo.cs" />
+    <Compile Include="deliverycurgyroinfo.cs" />
+    <Compile Include="deliverycurtempinfo.cs" />
+    <Compile Include="deliverypath.cs" />
+    <Compile Include="deviceuseinfo.cs" />
+    <Compile Include="driverinfo.cs" />
+    <Compile Include="exceptioninfo.cs" />
+    <Compile Include="exceptiontype.cs" />
+    <Compile Include="incubator.cs" />
+    <Compile Include="jamphotomanger.cs" />
+    <Compile Include="logiscompanyinfo.cs" />
+    <Compile Include="logistouser.cs" />
+    <Compile Include="productdelivery.cs" />
+    <Compile Include="productinfo.cs" />
+    <Compile Include="refrigerationhouseinfo.cs" />
+    <Compile Include="refrighousemonitoring.cs" />
+    <Compile Include="refueling.cs" />
+    <Compile Include="regionalparkmanage.cs" />
+    <Compile Include="roadtoll.cs" />
+    <Compile Include="sessions.cs" />
+    <Compile Include="tempvehicleinfo.cs" />
+    <Compile Include="tempvehicleinfo.ext.cs" />
+    <Compile Include="terminaldeviceinfo.cs" />
+    <Compile Include="usercontrolinfo.cs" />
+    <Compile Include="usersinfo.ext.cs" />
+    <Compile Include="usersinfo.cs" />
+    <Compile Include="userstypeinfo.cs" />
+    <Compile Include="usertoken.cs" />
+    <Compile Include="vehicledelivery.cs" />
+    <Compile Include="vehicledelivery.ext.cs" />
+    <Compile Include="vehicledoors.cs" />
+    <Compile Include="vehicleinfo.cs" />
+    <Compile Include="vehicleinfo.ext.cs" />
+    <Compile Include="vehiclejam.cs" />
+    <Compile Include="vehiclepointoff.cs" />
+    <Compile Include="vehicletype.cs" />
+    <Compile Include="vehicleupkeep.cs" />
+    <Compile Include="vehicleupkeep.ext.cs" />
+    <Compile Include="vehihiclemileage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\clientinfo.datasource" />
+    <None Include="Properties\DataSources\companyinfo.datasource" />
+    <None Include="Properties\DataSources\deliverycurgpsinfo.datasource" />
+    <None Include="Properties\DataSources\deliverycurgyroinfo.datasource" />
+    <None Include="Properties\DataSources\deliverycurhumiinfo.datasource" />
+    <None Include="Properties\DataSources\deliverycurtempinfo.datasource" />
+    <None Include="Properties\DataSources\deliverypath.datasource" />
+    <None Include="Properties\DataSources\deviceuseinfo.datasource" />
+    <None Include="Properties\DataSources\driverinfo.datasource" />
+    <None Include="Properties\DataSources\exceptioninfo.datasource" />
+    <None Include="Properties\DataSources\exceptiontype.datasource" />
+    <None Include="Properties\DataSources\incubator.datasource" />
+    <None Include="Properties\DataSources\jamphotomanger.datasource" />
+    <None Include="Properties\DataSources\logiscompanyinfo.datasource" />
+    <None Include="Properties\DataSources\logistouser.datasource" />
+    <None Include="Properties\DataSources\productdelivery.datasource" />
+    <None Include="Properties\DataSources\productinfo.datasource" />
+    <None Include="Properties\DataSources\refrigerationhouseinfo.datasource" />
+    <None Include="Properties\DataSources\refrighousemonitoring.datasource" />
+    <None Include="Properties\DataSources\refueling.datasource" />
+    <None Include="Properties\DataSources\regionalparkmanage.datasource" />
+    <None Include="Properties\DataSources\roadtoll.datasource" />
+    <None Include="Properties\DataSources\sessions.datasource" />
+    <None Include="Properties\DataSources\tempvehicleinfo.datasource" />
+    <None Include="Properties\DataSources\terminaldeviceinfo.datasource" />
+    <None Include="Properties\DataSources\usercontrolinfo.datasource" />
+    <None Include="Properties\DataSources\usersinfo.datasource" />
+    <None Include="Properties\DataSources\userstypeinfo.datasource" />
+    <None Include="Properties\DataSources\usertoken.datasource" />
+    <None Include="Properties\DataSources\vehicledelivery.datasource" />
+    <None Include="Properties\DataSources\vehicledoors.datasource" />
+    <None Include="Properties\DataSources\vehicleinfo.datasource" />
+    <None Include="Properties\DataSources\vehiclejam.datasource" />
+    <None Include="Properties\DataSources\vehiclepointoff.datasource" />
+    <None Include="Properties\DataSources\vehicletype.datasource" />
+    <None Include="Properties\DataSources\vehicleupkeep.datasource" />
+    <None Include="Properties\DataSources\vehihiclemileage.datasource" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
